@@ -80,10 +80,11 @@ if st.session_state.knapp:
 
         AgGrid(frost2df('observations/availableTimeSeries', {'sources': stasjon}))
 
-        element = st.text_input('Element', 'mean(air_temperature P1D)')
-        time_offset = st.text_input('Time Offset', 'PT6H')
+        element = st.text_input('Element', 'wind_From_direction')
+        time_offset = st.text_input('Time Offset', 'PT0H')
         valid_from = st.text_input('Dato fra', '2014-04-03')
         valid_to = st.text_input('Dato til', '2024-04-03')
+        timeresolution = st.text_input(('Tidsoppløsning', 'PT1H'))
 
         st.button(label = "Vis resultat", on_click=callback_knapp3)
 
@@ -93,7 +94,8 @@ if st.session_state.knapp:
                 'sources': stasjon,
                 'elements': element,
                 'referencetime': valid_from + '/' + valid_to,
-                'timeoffsets': time_offset
+                'timeoffsets': time_offset,
+                'timeresolution': timeresolution 
             }
             df_para = obs2df(parameters=parameters, verbose=True).copy()
 
