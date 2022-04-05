@@ -81,6 +81,7 @@ if st.session_state.knapp:
         AgGrid(frost2df('observations/availableTimeSeries', {'sources': stasjon}))
 
         element = st.text_input('Element', 'mean(air_temperature P1D)')
+        time_offset = t.text_input('Time Offset', 'P1D')
         valid_from = st.text_input('Dato fra', '2014-04-03')
         valid_to = st.text_input('Dato til', '2024-04-03')
 
@@ -92,7 +93,7 @@ if st.session_state.knapp:
                 'sources': stasjon,
                 'elements': element,
                 'referencetime': valid_from + '/' + valid_to,
-                'timeoffsets': 'PT6H'
+                'timeoffsets': time_offset
             }
             df_para = obs2df(parameters=parameters, verbose=True).copy()
 
