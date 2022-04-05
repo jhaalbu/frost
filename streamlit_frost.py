@@ -84,7 +84,7 @@ if st.session_state.knapp:
         time_offset = st.text_input('Time Offset', 'PT0H')
         valid_from = st.text_input('Dato fra', '2014-04-03')
         valid_to = st.text_input('Dato til', '2024-04-03')
-        timeresolution = st.text_input(('Tidsoppløsning', 'PT1H'))
+        timeresolution = st.text_input('Tidsoppløsning', 'PT1H')
 
         st.button(label = "Vis resultat", on_click=callback_knapp3)
 
